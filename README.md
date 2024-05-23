@@ -7,13 +7,13 @@ You should have an app called _Unity Hub_ installed. Download here: https://unit
 
 1. Under _Installs_, ensure a valid Unity installation is there. If not, install one using _Install Editor_. Unity version _2020.3.33f1_ or greater is recommended. We will use _2020.3.33f1_ for illustrations in this document. Note: Newer Unity versions may have different editor UI and layout from the snapshot figures in this document.
 
-![image](https://github.com/assets/50002278/c45bb0f3-4877-4cdb-8eab-2251eec122ff)
+![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/a5d6fe64-f6df-4a55-97ca-d99a09cd4092)
+
 
 2. In the _Projects_ tab, click _New project_. In _All templates_, look for _3D (Built-In Render Pipeline)_
 3. Select this template and give it a project name, location, and your org. Finally, click _Create project_.
 
-![image](https://github.com/assets/50002278/59cbba5a-14f8-4a2b-bbe7-deaeffdf7dca)
-
+![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/8bf3f2fb-1025-4d46-a04f-08e332fd8ce1)
 
 
 ## 2) Project Preparation
