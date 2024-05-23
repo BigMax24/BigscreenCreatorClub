@@ -47,7 +47,8 @@ These folders will contain your environment's assets.
 
 ![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/d92e59fc-f275-44be-a626-1a9893b6ec97)
 
-![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/4a3d05a1-f081-407f-98a8-703a7727a562)
+![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/b5798057-54bd-4469-8880-2d616ab02e5c)
+
 
 
 
