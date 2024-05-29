@@ -14,7 +14,7 @@ You should have an app called _Unity Hub_ installed. Download here: https://unit
 
 1. Under _Installs_, ensure Unity installation version **2020.3.33f1** is there. If not, go to https://unity.com/releases/editor/archive in your browser and select _2020.X_ then scroll to _2020.3.33_ and click on _Unity Hub_. This will return you back to Unity Hub to install it.
 
-![image](https://github.com/memoization/BS_TemplateDoc/assets/50002278/f88ddb89-5c63-4b35-8539-f96ef6df1364)
+![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/c4bedbb8-e09f-4c2e-bbad-83d502eeed8d)
 ![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/a5d6fe64-f6df-4a55-97ca-d99a09cd4092)
 
 
