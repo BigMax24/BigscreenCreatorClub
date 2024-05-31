@@ -123,8 +123,8 @@ Provided are two screen objects under _Areas_:
 > [!CAUTION]
 > When rotating the _ScreenPlaceholder_ object in your environment, you must increment its rotation by 90 degrees starting from 0 on the y-axis. **0, 90, 180, 270, 360** (and so on) are valid rotations. Rotating it otherwise will cause screen lighting to show improperly in your environment. If you do not plan to have screen lighting in your environment, you can rotate as you please.
 > 
-> ![image](https://github.com/memoization/BS_TemplateDoc/assets/50002278/b6be3f82-8c32-49f2-a59d-ecd06831fe9f)
-> ![image](https://github.com/memoization/BS_TemplateDoc/assets/50002278/2f285b20-5d6f-4ec6-a509-1699e0c21f67)
+> ![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/d042ef8f-a7f0-49ac-acd9-12e5d45eaeda)
+> ![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/fb076171-7483-499b-8453-63dc286f2752)
 
 
 ### Colliders*
