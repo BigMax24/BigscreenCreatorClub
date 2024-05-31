@@ -23,6 +23,8 @@ You should have an app called _Unity Hub_ installed. Download here: https://unit
 
 ![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/8bf3f2fb-1025-4d46-a04f-08e332fd8ce1)
 
+> [!TIP]
+> We recommend creating a new project for each environment you plan to build. This will help you avoid mistakes and avoid exporting unnecessary assets that will contribute to the asset size limit. 
 
 ## 2) Project Preparation
 In the created project from _section 1_, you will start in a _SampleScene_. In the _Project_ window, right click the _Scenes_ folder and delete it.
@@ -80,7 +82,7 @@ The template has three root objects:
 > [!IMPORTANT]
 > All objects in your environment must be contained within the _SceneRoot_.
 
-Let's explain what the objects in the template are for. Items with (*) are required setup for accepting environment submission.
+Let's explain what the objects in the template are for. **Items with (*) are required setup for accepting environment submission.**
 
 ### Seats*
 There are two seat prefabs for use in Bigscreen:
@@ -91,7 +93,7 @@ There are two seat prefabs for use in Bigscreen:
 > Do not modify the seat prefabs nor unpack them as it can cause integration problems and your submission will end up not being accepted. They are only meant for moving and rotating around in your environment. You can duplicate or remove the seat objects as you please.
 
 > [!WARNING]
-> 15 or more starting seats are required to work with a full room in Bigscreen.
+> 15 or more starting seats are required to work with a full room in Bigscreen. It is recommended to keep your max seat count **below 800** with the max _SeatTransitional_ objects being **600** and _Seat_ objects being **200**.
 
 > [!WARNING]
 > There should not be any seats that are set inactive. If you don't need a seat object, you must delete it.
@@ -113,10 +115,16 @@ Provided are two screen objects under _Areas_:
 - **_ScreenPlaceholder_** -- this is where the primary screen will appear in your environment. It is where the host's desktop and any other screen-related content will be positioned at. You can adjust the position and rotation of this as you please. **There should only be one _ScreenPlaceholder_ in your environment.**
 - **_MirroredScreenContainer_** (optional) -- this has the mirrored screen which as the name suggests will mirror what the room host's primary screen is showing. This is optional and if you don't plan to use mirrored screens, it is recommended to delete it from the scene. You can adjust the size of the mirrored screen by changing the size of the inner _MirroredScreen_ object inside the container. Do not change the rotation or position of this object. Only do that on the _MirroredScreenContainer_ itself. You can duplicate the _MirroredScreenContainer_ to add more screens but at this time, we require that you only have 30 mirrored screens or less.
 
-> [!WARNING]
-> The aspect ratio of the _ScreenPlaceholder_ and _MirroredScreen_ must stay as 16:9. Changing it outside of 16:9 will cause stretching issues of screen content in Bigscreen. You should scale the screens appropriately by enabling the _Scale Tool_ in Unity then dragging the center white cube of the scale tool to change the size of the screen.
+> [!CAUTION]
+> The aspect ratio of the _ScreenPlaceholder_ and _MirroredScreen_ must stay as **16:9**. Changing it outside of 16:9 will cause stretching issues of screen content in Bigscreen. You should scale the screens appropriately by enabling the _Scale Tool_ in Unity then dragging the center white cube of the scale tool to change the size of the screen.
 > 
 > ![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/70bf51ab-0df0-4f47-82b3-787eaf1a8260)
+
+> [!CAUTION]
+> When rotating the _ScreenPlaceholder_ object in your environment, you must increment its rotation by 90 degrees starting from 0 on the y-axis. **0, 90, 180, 270, 360** (and so on) are valid rotations. Rotating it otherwise will cause screen lighting to show improperly in your environment. If you do not plan to have screen lighting in your environment, you can rotate as you please.
+> 
+> ![image](https://github.com/memoization/BS_TemplateDoc/assets/50002278/b6be3f82-8c32-49f2-a59d-ecd06831fe9f)
+> ![image](https://github.com/memoization/BS_TemplateDoc/assets/50002278/2f285b20-5d6f-4ec6-a509-1699e0c21f67)
 
 
 ### Colliders*
@@ -204,7 +212,7 @@ Let's start integrating with the template. In this example, we will walk through
 
 
 
-## 4) Lightbaking
+## 4) Materials & Lightbaking
 Bigscreen uses lightbaking to emit screen lighting while being performant on PC and Quest. There are two kinds:
 - **_lights up_** -- This is what your environment is intended to appear as when no content is showing on-screen. Think of it like a theater's lights turning on once the movie is over.
 - **_screen lit_** -- Bigscreen's dynamic lighting engine uses this lightmap to cast the screen's colors onto the environment. This is required for screen lighting to work in your environment.
@@ -212,13 +220,15 @@ Bigscreen uses lightbaking to emit screen lighting while being performant on PC 
 Both are used when dimming the lights in your environment. When no content is on-screen, the app will fade to your _lights up_ lightmap.
 
 > [!IMPORTANT]
-> It is important to assign your meshes with a simple material that's either assigned its texture assets or opaque with color. We recommend using the _Standard_ shader for your materials. When importing your environment into Bigscreen, we will assign the right shaders to the materials so screen lighting can work. **We do not accept having any realtime lighting setups nor complex shaders.** If there is a use case for a unique material or shader for object(s) in your environment, let us know about it in your submission ticket.
+> It is important to assign your meshes with a simple material that's either assigned its texture asset or opaque with color. We recommend using the _Standard_ shader for your materials. When importing your environment into Bigscreen, we will assign the right shaders to the materials so screen lighting can work. **We do not accept having any realtime lighting setups nor complex shaders.** If there is a use case for a unique material or shader for object(s) in your environment, let us know about it in your submission ticket.
+> 
+> **At this time, we require only *Albedo* (RGBA) texture maps on your materials. Support for Metallic and Normal maps might come in the future but to help keep the size of your assets at a minimum, it is best to have those texture assets absent.**
 
 > [!IMPORTANT]
 > You must ensure that all of your mesh objects you intend to lightbake with your environment have non-overlapping UV maps. If you lightbake otherwise, you end up with artifacts and screen lighting will not work appropriate.
 
 > [!IMPORTANT]
-> At a minimum, we require that you at least have a _lights up_ lightmap included with your environment. Only exception is if your meshes already have a suitable lightmap included.
+> At a minimum, we require that you at least have a _lights up_ lightmap included with your environment. Only exception is if your scene comes with suitable lightmaps attached to the mesh GameObjects.
 
 > [!NOTE]
 > There are scenarios where a screen lit lightbake of your environment is not needed. Any environments you intend to be fairly lit at all times will not need _screen lit_ lightmap(s) but only the _lights up_ lightmap(s). Screen lighting will not be active in this scenario. **If your environment is intended to be screen lit, you must run the _screen lit_ lightbake first then do _lights up_.**
@@ -278,7 +288,10 @@ For this example, we will use the native Unity lightbaking system but any other 
 
 11. We will keep the other settings as default but you may have to tune some numeric values under _Lightmapper_ to suit your environment's needs. You can view more info on these settings here: https://docs.unity3d.com/Manual/progressive-lightmapper.html
 
-12. Now we click _Generate Lighting_ and wait for the process to finish.
+12. Now we click _Generate Lighting_ and wait for the process to finish. You can see the progress in the lower right hand corner of the Unity window.
+
+> [!TIP]
+> If you find the size of your lightmap files are too large, try lowering the resolution of _Max Lightmap Size_ or the texels value of _Lightmap Resolution_.
 
 13. This is our result for the _screen lit_ lightmap. It seems a little too dim, so let's adjust the _ScreenEmissive_ intensity to emit more light. You may have to adjust this too depending on your environment and lightbake output.
 
