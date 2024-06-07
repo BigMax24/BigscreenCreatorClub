@@ -7,6 +7,8 @@ Because Bigscreen is cross-platform for both PCVR and Quest, there are some rest
 - 📂 File Size Limit: Ensure all environment files (meshes, textures, audio, materials, and scenes) altogether don't exceed **70MB**.
 - ⚠️ **No Copyrighted Work**: Make sure you have the rights to use all assets in your environment.
 - 🛠️ Unity editor version **2020.3.33f1** is required. Using any newer major version of Unity editor can cause integration issues with your environment.
+- 💡 No realtime lighting setups.
+- 🔎 At this time, using Normal maps or Metallic maps are not recommended. They won't be used when integrating your environment submission and would only contribute to the allotted size limit.
 
 ## 1) Unity Project
 _If you already have a Unity project created with your environment in the correct editor version, you can skip to section 2._
@@ -222,7 +224,7 @@ Both are used when dimming the lights in your environment. When no content is on
 > [!IMPORTANT]
 > It is important to assign your meshes with a simple material that's either assigned its texture asset or opaque with color. We recommend using the _Standard_ shader for your materials. When importing your environment into Bigscreen, we will assign the right shaders to the materials so screen lighting can work. **We do not accept having any realtime lighting setups nor complex shaders.** If there is a use case for a unique material or shader for object(s) in your environment, let us know about it in your submission ticket.
 > 
-> **At this time, we require only *Albedo* (RGBA) texture maps on your materials. Support for Metallic and Normal maps might come in the future but to help keep the size of your assets at a minimum, it is best to have those texture assets absent.**
+> **At this time, we require that you use only *Albedo* (RGB) base texture maps on your materials. Support for Metallic and Normal maps with user environments might come in the future but to help keep the size of your assets at a minimum, it is best to have those texture assets absent.**
 
 > [!IMPORTANT]
 > You must ensure that all of your mesh objects you intend to lightbake with your environment have non-overlapping UV maps. If you lightbake otherwise, you end up with artifacts and screen lighting will not work appropriate.
