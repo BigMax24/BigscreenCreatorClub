@@ -71,7 +71,8 @@ These folders will contain your environment's assets.
 
 8. Finally, right click _SceneRoot_ in the _Hierarchy_ window then click _Prefab_ > _Unpack_.
 
-![image](https://github.com/memoization/BS_TemplateDoc/assets/50002278/9fb4a31a-d0ca-4010-905d-2a80c2411465)
+![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/b810d62b-cfa9-4f13-8251-fdbc05363a22)
+
 
 > [!CAUTION]
 > Avoid using _Prefab_ > _Unpack Completely_. Doing this will remove object references that are required for integrating your submission into Bigscreen.
@@ -250,9 +251,9 @@ Both are used when dimming the lights in your environment. When no content is on
 > [!IMPORTANT]
 > Any mesh objects you import into your project must not have baked in materials. When integrating your submission, various shaders are assigned to materials to make the environment work in the app. In situations you import a mesh with included materials, you should extract the material(s) and put it under your unique *UserEnvironments* materials folder created in section 2. Right click the materials inside your model and click *Extract From Prefab* then in the file explorer window, navigate to your project's material folder and select it. *You may need to reassign the extracted materials to your objects.*
 > 
-> ![image](https://github.com/memoization/BS_TemplateDoc/assets/50002278/4edae830-b73a-46b8-ad8b-aafa1cd246ff)
+>![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/fe24b720-4a0a-40f7-b3b9-ce907e8e55f4)
 > 
-> ![image](https://github.com/memoization/BS_TemplateDoc/assets/50002278/bc03fe7f-485e-4de9-b078-ab309c85f9c8)
+![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/805f96e7-79d8-42a1-92fb-8ce2fc74c77e)
 
 > [!IMPORTANT]
 > You must ensure that all of your mesh objects you intend to lightbake with your environment have non-overlapping UV maps. If you lightbake otherwise, you end up with artifacts and screen lighting will not work appropriate.
