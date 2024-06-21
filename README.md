@@ -9,6 +9,7 @@ Because Bigscreen is cross-platform for both PCVR and Quest, there are some rest
 - 🛠️ Unity editor version **2020.3.33f1** is required. Using any newer major version of Unity editor can cause integration issues with your environment.
 - 💡 No realtime lighting setups.
 - 🔎 At this time, using Normal maps or Metallic maps are not recommended. They won't be used when integrating your environment submission and would only contribute to the allotted size limit.
+- 🌐 No baked in materials. If your imported meshes have included materials, you must extract them into your unique materials folder. More details in section 4. 
 
 ## 1) Unity Project
 _If you already have a Unity project created with your environment in the correct editor version, you can skip to section 2._
@@ -27,6 +28,13 @@ You should have an app called _Unity Hub_ installed. Download here: https://unit
 
 > [!TIP]
 > We recommend creating a new project for each environment you plan to build. This will help you avoid mistakes and avoid exporting unnecessary assets that will contribute to the asset size limit. 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 2) Project Preparation
 In the created project from _section 1_, you will start in a _SampleScene_. In the _Project_ window, right click the _Scenes_ folder and delete it.
@@ -62,10 +70,18 @@ These folders will contain your environment's assets.
 ![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/b5798057-54bd-4469-8880-2d616ab02e5c)
 
 8. Finally, right click _SceneRoot_ in the _Hierarchy_ window then click _Prefab_ > _Unpack_.
+
+![image](https://github.com/memoization/BS_TemplateDoc/assets/50002278/9fb4a31a-d0ca-4010-905d-2a80c2411465)
+
 > [!CAUTION]
 > Avoid using _Prefab_ > _Unpack Completely_. Doing this will remove object references that are required for integrating your submission into Bigscreen.
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 3) Integrating with the Template
 The template has three root objects:
@@ -212,7 +228,12 @@ Let's start integrating with the template. In this example, we will walk through
 
 🎉The scene setup is now done! Next we will look at lightbaking in the next section to get screen lights to work in the environment.
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 4) Materials & Lightbaking
 Bigscreen uses lightbaking to emit screen lighting while being performant on PC and Quest. There are two kinds:
@@ -227,6 +248,13 @@ Both are used when dimming the lights in your environment. When no content is on
 > **At this time, we require that you use only *Albedo* (RGB) base texture maps on your materials. Support for Metallic and Normal maps with user environments might come in the future but to help keep the size of your assets at a minimum, it is best to have those texture assets absent.**
 
 > [!IMPORTANT]
+> Any mesh objects you import into your project must not have baked in materials. When integrating your submission, various shaders are assigned to materials to make the environment work in the app. In situations you import a mesh with included materials, you should extract the material(s) and put it under your unique *UserEnvironments* materials folder created in section 2. Right click the materials inside your model and click *Extract From Prefab* then in the file explorer window, navigate to your project's material folder and select it. *You may need to reassign the extracted materials to your objects.*
+> 
+> ![image](https://github.com/memoization/BS_TemplateDoc/assets/50002278/4edae830-b73a-46b8-ad8b-aafa1cd246ff)
+> 
+> ![image](https://github.com/memoization/BS_TemplateDoc/assets/50002278/bc03fe7f-485e-4de9-b078-ab309c85f9c8)
+
+> [!IMPORTANT]
 > You must ensure that all of your mesh objects you intend to lightbake with your environment have non-overlapping UV maps. If you lightbake otherwise, you end up with artifacts and screen lighting will not work appropriate.
 
 > [!IMPORTANT]
@@ -235,8 +263,8 @@ Both are used when dimming the lights in your environment. When no content is on
 > [!NOTE]
 > There are scenarios where a screen lit lightbake of your environment is not needed. Any environments you intend to be fairly lit at all times will not need _screen lit_ lightmap(s) but only the _lights up_ lightmap(s). Screen lighting will not be active in this scenario. **If your environment is intended to be screen lit, you must run the _screen lit_ lightbake first then do _lights up_.**
 
-### Setup
-For this example, we will use the native Unity lightbaking system but any other baking asset you use would work granted that it does not produce separate direction lightmaps. Additionally, we will use the same environment that we have setup in _section 3_.
+### Lightbaking Setup
+For this guide, we will use the native Unity lightbaking system but any other baking asset you use would work granted that it does not produce separate direction lightmaps. Additionally, we will use the same environment that we have setup in _section 3_.
 
 1. We first need to set all of the environment's mesh GameObjects to _Static_ for lightbakes to use their surfaces.
 
@@ -358,7 +386,27 @@ For this example, we will use the native Unity lightbaking system but any other 
 
 🎉Lightbaking is now done! Next we will go over exporting your environment so it can integrate into Bigscreen smoothly.
 
+<br>
 
+### Lightbake Troubleshooting
+If you are having trouble with lightbaking some objects or with the whole scene, try looking at these common areas:
+
+- Make sure every mesh object in your scene has *Static* enabled in the *Inspector* window.
+- All of your light sources should have their *Mode* set to *Baked*.
+- If one or more objects are not being assigned a lightmap, select their mesh model in the *Project* window and in the *Model* import settings, enable *Generate Lightmap UVs* then click *Apply*.
+- If the lightbake is not bright enough, try increasing the light source(s) *Intensity*.
+- Your mesh models should have unwrapped UVs and no UVs that overlap each other. If your lightbake has line looking artifacts, try fixing up the mesh's UVs in a mesh editing program such as Blender or enabling *Generate Lightmap UVs* in the *Model* import settings.
+- If your lightmaps have directional variants included (usually suffixed with "dir" in the file name), set the *Directional Mode* to *Non-Directional* in the *Scene* tab of the *Lighting* window then use ***Clear Baked Data*** before baking again!
+
+> [!TIP]
+> When making changes to your lightbake setup, it is recommended to clear the current lightbake data before starting a new lightbake. You can do this by clicking on the down arrow ▼ in the *Generate Lighting* button then click ***Clear Baked Data***.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 5) Exporting your Environment
 When exporting your environment, you need to make sure all of your environment's assets are under _UserEnvironments_ and under the subfolders you created from _section 2_. Failure to do so will cause missing assets to occur when integrating your environment into Bigscreen. You must also export assets that are **only used in your environment** and no extra assets left over from other environment projects or what you no longer require.
