@@ -251,7 +251,7 @@ Both are used when dimming the lights in your environment. When no content is on
 > [!IMPORTANT]
 > Any mesh objects you import into your project must not have baked in materials. When integrating your submission, various shaders are assigned to materials to make the environment work in the app. In situations you import a mesh with included materials, you should extract the material(s) and put it under your unique *UserEnvironments* materials folder created in section 2. Right click the materials inside your model and click *Extract From Prefab* then in the file explorer window, navigate to your project's material folder and select it. *You may need to reassign the extracted materials to your objects.*
 > 
->![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/fe24b720-4a0a-40f7-b3b9-ce907e8e55f4)
+![341202431-4edae830-b73a-46b8-ad8b-aafa1cd246ff](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/6c2dda36-4112-4029-8572-931e3e84ef46)
 > 
 ![image](https://github.com/BigMax24/BigscreenCreatorClub/assets/167658931/805f96e7-79d8-42a1-92fb-8ce2fc74c77e)
 
